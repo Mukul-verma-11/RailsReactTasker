@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoggedContext } from "../context/Logged";
+import apiClient from "../api";
 
 const Logout = () => {
   const navigate = useNavigate();
@@ -9,14 +10,25 @@ const Logout = () => {
   const logState = useContext(LoggedContext);
 
   const handleLogout = () => {
-    axios({
-      method: "delete",
-      url: "http://localhost:3000/users/sign_out",
+
+    // axios({
+    //   method: "delete",
+    //   url: "http://localhost:3000/users/sign_out",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
+    //   },
+    // });
+    const authenticityToken = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute("content");
+
+    apiClient.delete("/users/sign_out",{
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("authtoken")}`,
+        "X-CSRF-Token": authenticityToken,
       },
-    });
+    })
 
     localStorage.removeItem("authtoken");
     localStorage.removeItem("accessToken");

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoggedContext } from "../context/Logged";
+import apiClient from "../api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,22 +18,25 @@ const Login = () => {
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content");
 
-    axios({
-      method: "post",
-      url: "http://localhost:3000/users/sign_in",
-      data: {
-        user: {
-          email: email,
-          password: password,
+    apiClient
+      .post(
+        "/users/sign_in",
+        {
+          user: {
+            email: email,
+            password: password,
+          },
         },
-      },
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": authenticityToken,
-      },
-    })
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": authenticityToken,
+          },
+        }
+      )
       .then((res) => {
         const token = res.headers["authorization"].split(" ")[1];
+        console.log("responses", res);
         localStorage.setItem("authtoken", token);
         localStorage.setItem(
           "accessToken",
@@ -40,9 +44,9 @@ const Login = () => {
         );
         logState.setLog(logState.log + 1);
         console.log(logState.log);
-        if (res.data.role == 0){
+        if (res.data.role == 0) {
           navigate("/admin/dashboard");
-        }else{
+        } else {
           navigate("/user/dashboard");
         }
       })

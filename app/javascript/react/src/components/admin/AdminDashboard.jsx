@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './Navbar';
 
 const AdminDashboard = () => {
+
+
   console.log('admin');
   return (
     <div>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  # get 'all_users', to: 'user#all_users'
+
 
   match "*path", to: "home#index", via: :all
 
