@@ -1,0 +1,12 @@
+.logout_btn{
+    border: none;
+    width: 120px;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    /* transition: 0.3s; */
+    height: 30px;
+}
+
+.logout_btn:hover{
+    border: 1px solid black;
+}

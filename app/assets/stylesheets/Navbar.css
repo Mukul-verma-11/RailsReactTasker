@@ -1,0 +1,38 @@
+.navbar{
+    /* border: 1px solid black; */
+    display: flex;
+    top: 0;
+    position: sticky;
+    background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(100,0,255,0.48365283613445376) 99%);
+    /* background: rgb(164,5,242);
+background: linear-gradient(90deg, rgba(164,5,242,1) 14%, rgba(100,0,255,1) 72%, rgba(100,0,255,1) 100%); */
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.09);
+}
+
+.logo{
+    width: 30%;
+    padding: 3px;
+}
+
+.menu{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.logo_img{
+    height: 100px;
+    margin: 0;
+}
+
+.clock{
+    display: flex;
+    /* border: 2px solid red; */
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+
+}
