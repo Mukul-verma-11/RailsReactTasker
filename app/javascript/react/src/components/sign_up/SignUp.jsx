@@ -36,6 +36,7 @@ const SignUp = () => {
         (res) => {
           const token = res.headers["authorization"].split(' ')[1]
           localStorage.setItem('authtoken',token)
+          alert('Account Has Been Created')
           navigate("/login")
         }
       )

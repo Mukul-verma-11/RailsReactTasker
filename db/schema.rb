@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_064629) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_113209) do
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags_tasks", id: false, force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "task_id", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -19,6 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_064629) do
     t.datetime "updated_at", null: false
     t.datetime "deadline"
     t.datetime "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x0000000113754ba8>"
+  end
+
+  create_table "tasks_users", id: false, force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|

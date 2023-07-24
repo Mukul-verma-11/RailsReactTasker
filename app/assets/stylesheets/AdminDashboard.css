@@ -1,0 +1,19 @@
+.task_btn{
+    border: 1px solid black;
+    height: 60px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task_btn h2{
+    color: white;
+    letter-spacing: 2px;
+}
+
+.task_table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

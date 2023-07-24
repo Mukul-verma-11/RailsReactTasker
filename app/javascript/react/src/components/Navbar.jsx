@@ -1,6 +1,6 @@
 import * as React from "react";
-import Clock from "../Clock";
-import Logout from "../logout/Logout";
+import Clock from "./Clock";
+import Logout from "./logout/Logout";
 const Navbar = () => {
   return (
     <div className="navbar">
